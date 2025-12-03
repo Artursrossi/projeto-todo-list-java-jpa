@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/tasks")
@@ -24,27 +25,31 @@ public class TaskController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Void> create(@RequestBody TaskModel taskModel){
-        taskRepository.save(taskModel);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public ResponseEntity<TaskModel> create(@Valid @RequestBody TaskModel taskModel){
+        TaskModel createdTask = taskRepository.save(taskModel);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdTask);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TaskModel> updateTask(@RequestBody TaskModel taskModel, @PathVariable UUID id)
+    public ResponseEntity<TaskModel> update(@Valid @RequestBody TaskModel taskModel, @PathVariable UUID id)
     {
-        TaskModel updateTask = taskRepository.findById(id).map(task -> {
+        TaskModel updateModel = taskRepository.findById(id).map(task -> {
                     task.setDescription(taskModel.getDescription());
                     task.setTitle(taskModel.getTitle());
+                    task.setStatus(taskModel.getStatus());
+                    task.setPriority(taskModel.getPriority());
+                    task.setStartAt(taskModel.getStartAt());
+                    task.setEndAt(taskModel.getEndAt());
 
-            return task;
+                    return task;
                 }
         ).orElse(null);
 
-        if (updateTask == null) {
+        if (updateModel == null) {
             return ResponseEntity.notFound().build();
         }
 
-        return ResponseEntity.ok(taskRepository.save(updateTask));
+        return ResponseEntity.status(HttpStatus.OK).body(taskRepository.save(updateModel));
     }
 
     @PatchMapping("/{id}/status")
