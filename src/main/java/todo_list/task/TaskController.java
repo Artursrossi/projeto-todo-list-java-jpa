@@ -33,20 +33,23 @@ public class TaskController {
     @PutMapping("/{id}")
     public ResponseEntity<TaskModel> update(@Valid @RequestBody TaskModel taskModel, @PathVariable UUID id)
     {
-        TaskModel formattedTask = taskRepository.findById(id).map(task -> {
+        TaskModel updateModel = taskRepository.findById(id).map(task -> {
                     task.setDescription(taskModel.getDescription());
                     task.setTitle(taskModel.getTitle());
+                    task.setStatus(taskModel.getStatus());
+                    task.setPriority(taskModel.getPriority());
+                    task.setStartAt(taskModel.getStartAt());
+                    task.setEndAt(taskModel.getEndAt());
 
-            return task;
+                    return task;
                 }
         ).orElse(null);
 
-        if (formattedTask == null) {
+        if (updateModel == null) {
             return ResponseEntity.notFound().build();
         }
 
-        TaskModel updatedTask = taskRepository.save(formattedTask);
-        return ResponseEntity.status(HttpStatus.OK).body(updatedTask);
+        return ResponseEntity.status(HttpStatus.OK).body(taskRepository.save(updateModel));
     }
 
     @PatchMapping("/{id}/status")
