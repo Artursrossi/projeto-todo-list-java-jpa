@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/tasks")
@@ -23,13 +24,13 @@ public class TaskController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<TaskModel> create(@RequestBody TaskModel taskModel){
+    public ResponseEntity<TaskModel> create(@Valid @RequestBody TaskModel taskModel){
         TaskModel createdTask = taskRepository.save(taskModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdTask);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TaskModel> update(@RequestBody TaskModel taskModel, @PathVariable UUID id)
+    public ResponseEntity<TaskModel> update(@Valid @RequestBody TaskModel taskModel, @PathVariable UUID id)
     {
         TaskModel formattedTask = taskRepository.findById(id).map(task -> {
                     task.setDescription(taskModel.getDescription());
