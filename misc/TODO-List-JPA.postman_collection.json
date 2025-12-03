@@ -1,0 +1,268 @@
+{
+	"info": {
+		"_postman_id": "0698a3c6-ca1d-4d79-b49e-405fd459a4d1",
+		"name": "TODO-List-JPA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37089183"
+	},
+	"item": [
+		{
+			"name": "Obter todas as tarefas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tasks/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tasks",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar tarefa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tasks/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tasks",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Prioridade Urgente",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Estudar para a prova do POO\",\n\t\"description\": \"Estudar para a prova de POO do professor Maromo no dia 04/12\",\n\t\"priority\": \"URGENT\",\n\t\"status\": \"TODO\",\n\t\"startAt\": \"2025-11-27T09:30\",\n\t\"endAt\": \"2025-12-04T12:50\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tasks/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tasks",
+								""
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Prioridade Alta",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Estudar para a prova do POO\",\n\t\"description\": \"Estudar para a prova de POO do professor Maromo no dia 04/12\",\n\t\"priority\": \"URGENT\",\n\t\"status\": \"TODO\",\n\t\"startAt\": \"2025-11-27T09:30\",\n\t\"endAt\": \"2025-12-04T12:50\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tasks/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tasks",
+								""
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Prioridade Normal",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Estudar para a prova do POO\",\n\t\"description\": \"Estudar para a prova de POO do professor Maromo no dia 04/12\",\n\t\"priority\": \"NORMAL\",\n\t\"status\": \"TODO\",\n\t\"startAt\": \"2025-11-27T09:30\",\n\t\"endAt\": \"2025-12-04T12:50\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tasks/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tasks",
+								""
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Prioridade Baixa",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Estudar para a prova do POO\",\n\t\"description\": \"Estudar para a prova de POO do professor Maromo no dia 04/12\",\n\t\"priority\": \"LOW\",\n\t\"status\": \"TODO\",\n\t\"startAt\": \"2025-11-27T09:30\",\n\t\"endAt\": \"2025-12-04T12:50\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tasks/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tasks",
+								""
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Atualizar tarefa",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Estudar para a prova de Cálculo\",\n\t\"description\": \"Estudar para a prova de Cálculo para o dia 15/12\",\n\t\"status\": \"DOING\",\n\t\"priority\": \"URGENT\",\n\t\"startAt\": \"2025-11-27T09:30:00\",\n\t\"endAt\": \"2025-12-04T12:50:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/tasks/6281da72-9cbc-48cc-b084-8657adf40c6b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tasks",
+						"6281da72-9cbc-48cc-b084-8657adf40c6b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar status da tarefa",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"status\": \"COMPLETED\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/tasks/6281da72-9cbc-48cc-b084-8657adf40c6b/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tasks",
+						"6281da72-9cbc-48cc-b084-8657adf40c6b",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar prioridade da tarefa",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"priority\": \"HIGH\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/tasks/6281da72-9cbc-48cc-b084-8657adf40c6b/priority",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tasks",
+						"6281da72-9cbc-48cc-b084-8657adf40c6b",
+						"priority"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
