@@ -64,5 +64,3 @@ Isabella Mantovani Rottoli
 Marjory Harumi Barbosa Hito
 Vinicius Allejandro da Silva Teixeira
 
-•	Artur Schincariol Rossi
-•	Isabella Rottoli
