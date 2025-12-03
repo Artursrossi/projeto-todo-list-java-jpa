@@ -23,15 +23,15 @@ public class TaskController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Void> create(@RequestBody TaskModel taskModel){
-        taskRepository.save(taskModel);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public ResponseEntity<TaskModel> create(@RequestBody TaskModel taskModel){
+        TaskModel createdTask = taskRepository.save(taskModel);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdTask);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<TaskModel> update(@RequestBody TaskModel taskModel, @PathVariable UUID id)
     {
-        TaskModel updateTask = taskRepository.findById(id).map(task -> {
+        TaskModel formattedTask = taskRepository.findById(id).map(task -> {
                     task.setDescription(taskModel.getDescription());
                     task.setTitle(taskModel.getTitle());
 
@@ -39,10 +39,11 @@ public class TaskController {
                 }
         ).orElse(null);
 
-        if (updateTask == null) {
+        if (formattedTask == null) {
             return ResponseEntity.notFound().build();
         }
 
-        return ResponseEntity.ok(taskRepository.save(updateTask));
+        TaskModel updatedTask = taskRepository.save(formattedTask);
+        return ResponseEntity.status(HttpStatus.OK).body(updatedTask);
     }
 }
